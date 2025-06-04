@@ -1,0 +1,83 @@
+object MainData: TMainData
+  OldCreateOrder = False
+  Height = 382
+  Width = 642
+  object SQLConnection: TSQLConnection
+    ConnectionName = 'FBConnection'
+    DriverName = 'Firebird'
+    GetDriverFunc = 'getSQLDriverINTERBASE'
+    LibraryName = 'dbxfb.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverName=Firebird'
+      
+        'Database=C:\Users\Administrador\Documents\MProject\Database\DBS.' +
+        'FDB')
+    VendorLib = 'fbclient.dll'
+    Connected = True
+    Left = 56
+    Top = 264
+  end
+  object SQLGetCustomers: TSQLTable
+    MaxBlobSize = -1
+    SQLConnection = SQLConnection
+    TableName = 'CUSTOMERS'
+    Left = 144
+    Top = 264
+    object SQLGetCustomersID: TLargeintField
+      FieldName = 'ID'
+      Required = True
+    end
+    object SQLGetCustomersNAME: TStringField
+      FieldName = 'NAME'
+      Required = True
+      Size = 255
+    end
+    object SQLGetCustomersPHONE: TStringField
+      FieldName = 'PHONE'
+      Size = 12
+    end
+    object SQLGetCustomersBIRTHDAY_DATE: TDateField
+      FieldName = 'BIRTHDAY_DATE'
+    end
+    object SQLGetCustomersEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Required = True
+      Size = 254
+    end
+  end
+  object DataSetProvider1: TDataSetProvider
+    DataSet = SQLGetCustomers
+    Left = 368
+    Top = 272
+  end
+  object CustomerDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider1'
+    Left = 420
+    Top = 272
+    object CustomerDataSetID: TLargeintField
+      FieldName = 'ID'
+      Required = True
+    end
+    object CustomerDataSetNAME: TStringField
+      FieldName = 'NAME'
+      Required = True
+      Size = 255
+    end
+    object CustomerDataSetPHONE: TStringField
+      FieldName = 'PHONE'
+      Size = 12
+    end
+    object CustomerDataSetBIRTHDAY_DATE: TDateField
+      FieldName = 'BIRTHDAY_DATE'
+    end
+    object CustomerDataSetEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Required = True
+      Size = 254
+    end
+  end
+end

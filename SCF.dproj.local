@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/06/02 15:19:44.657.pas,C:\Users\Administrador\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Administrador\Documents\MProject\Dashboard.pas</Transaction>
+    <Transaction>2025/06/02 15:19:44.657.dfm,C:\Users\Administrador\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Administrador\Documents\MProject\Dashboard.dfm</Transaction>
+    <Transaction>2025/06/02 15:19:57.496.dproj,C:\Users\Administrador\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Administrador\Documents\MProject\SCF.dproj</Transaction>
+    <Transaction>2025/06/02 15:26:16.707.pas,C:\Users\Administrador\Documents\MProject\Unit2.pas=C:\Users\Administrador\Documents\MProject\CreateCustomer.pas</Transaction>
+    <Transaction>2025/06/02 15:26:16.707.dfm,C:\Users\Administrador\Documents\MProject\Unit2.dfm=C:\Users\Administrador\Documents\MProject\CreateCustomer.dfm</Transaction>
+    <Transaction>2025/06/02 15:28:45.224.pas,C:\Users\Administrador\Documents\MProject\CreateCustomer.pas=C:\Users\Administrador\Documents\MProject\Customer.pas</Transaction>
+    <Transaction>2025/06/02 15:28:45.224.dfm,C:\Users\Administrador\Documents\MProject\CreateCustomer.dfm=C:\Users\Administrador\Documents\MProject\Customer.dfm</Transaction>
+    <Transaction>2025/06/02 16:09:50.129.pas,C:\Users\Administrador\Documents\MProject\Unit1.pas=C:\Users\Administrador\Documents\MProject\DataModule.pas</Transaction>
+    <Transaction>2025/06/02 16:09:50.129.dfm,C:\Users\Administrador\Documents\MProject\Unit1.dfm=C:\Users\Administrador\Documents\MProject\DataModule.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

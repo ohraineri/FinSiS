@@ -1,0 +1,222 @@
+object CustomerForm: TCustomerForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Clientes'
+  ClientHeight = 436
+  ClientWidth = 768
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  WindowState = wsMaximized
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SearchLabel: TLabel
+    Left = 463
+    Top = 13
+    Width = 46
+    Height = 13
+    Caption = 'Pesquisar'
+  end
+  object Panel: TPanel
+    Left = 0
+    Top = 0
+    Width = 768
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+  end
+  object CreateCustomerButton: TBitBtn
+    Left = 8
+    Top = 8
+    Width = 129
+    Height = 25
+    Caption = 'Novo'
+    TabOrder = 1
+    OnClick = CreateCustomerButtonClick
+  end
+  object EditCustomerButton: TBitBtn
+    Left = 176
+    Top = 10
+    Width = 129
+    Height = 25
+    Caption = 'Editar'
+    TabOrder = 2
+    OnClick = EditCustomerButtonClick
+  end
+  object DeleteCustomerButton: TBitBtn
+    Left = 328
+    Top = 8
+    Width = 129
+    Height = 25
+    Caption = 'Apagar'
+    TabOrder = 3
+    OnClick = DeleteCustomerButtonClick
+  end
+  object SearchCustomerInput: TEdit
+    Left = 515
+    Top = 11
+    Width = 182
+    Height = 21
+    TabOrder = 4
+    OnChange = SearchCustomerInputChange
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 232
+    Width = 768
+    Height = 204
+    Align = alBottom
+    TabOrder = 5
+    object CustomerGrid: TDBGrid
+      Left = 1
+      Top = 6
+      Width = 766
+      Height = 197
+      Align = alBottom
+      DataSource = CustomersDataSource
+      Options = [dgTitles, dgRowLines, dgTabs, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'ID'
+          Width = 30
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NAME'
+          Title.Caption = 'Nome'
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EMAIL'
+          Title.Caption = 'E-mail'
+          Width = 170
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'BIRTHDAY_DATE'
+          Title.Caption = 'Data de aniversario'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PHONE'
+          Title.Caption = 'Telefone'
+          Width = 249
+          Visible = True
+        end>
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 41
+    Width = 768
+    Height = 191
+    Align = alClient
+    TabOrder = 6
+    ExplicitLeft = 8
+    ExplicitTop = 161
+    object CustomerFormGroupBox: TGroupBox
+      Left = 1
+      Top = 1
+      Width = 766
+      Height = 189
+      Align = alClient
+      Caption = 'Dados do cliente'
+      TabOrder = 0
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      object Label1: TLabel
+        Left = 7
+        Top = 16
+        Width = 27
+        Height = 13
+        Caption = 'Nome'
+        FocusControl = NameInput
+      end
+      object Label2: TLabel
+        Left = 7
+        Top = 62
+        Width = 42
+        Height = 13
+        Caption = 'Telefone'
+        FocusControl = PhoneInput
+      end
+      object Label4: TLabel
+        Left = 199
+        Top = 62
+        Width = 28
+        Height = 13
+        Caption = 'E-mail'
+        FocusControl = EmailInput
+      end
+      object NameInput: TDBEdit
+        Left = 7
+        Top = 35
+        Width = 1024
+        Height = 21
+        DataField = 'NAME'
+        DataSource = CustomersDataSource
+        TabOrder = 0
+      end
+      object PhoneInput: TDBEdit
+        Left = 7
+        Top = 85
+        Width = 160
+        Height = 21
+        DataField = 'PHONE'
+        DataSource = CustomersDataSource
+        TabOrder = 1
+      end
+      object EmailInput: TDBEdit
+        Left = 199
+        Top = 81
+        Width = 1024
+        Height = 21
+        DataField = 'EMAIL'
+        DataSource = CustomersDataSource
+        TabOrder = 2
+      end
+    end
+    object SaveCustomerFormButton: TBitBtn
+      Left = 8
+      Top = 129
+      Width = 166
+      Height = 25
+      Caption = 'Salvar'
+      TabOrder = 1
+      OnClick = SaveCustomerFormButtonClick
+    end
+    object CancelCustomerFormButton: TBitBtn
+      Left = 192
+      Top = 129
+      Width = 153
+      Height = 25
+      Caption = 'Cancel'
+      TabOrder = 2
+      OnClick = CancelCustomerFormButtonClick
+    end
+  end
+  object CustomersDataSource: TDataSource
+    DataSet = MainData.CustomerDataSet
+    Left = 720
+    Top = 280
+  end
+end

@@ -1,0 +1,208 @@
+unit Customer;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, StdCtrls, Buttons, ExtCtrls, DB, Mask, DBCtrls;
+
+type
+  TCustomerForm = class(TForm)
+    Panel: TPanel;
+    CreateCustomerButton: TBitBtn;
+    EditCustomerButton: TBitBtn;
+    DeleteCustomerButton: TBitBtn;
+    SearchLabel: TLabel;
+    SearchCustomerInput: TEdit;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    CustomersDataSource: TDataSource;
+    CustomerGrid: TDBGrid;
+    CustomerFormGroupBox: TGroupBox;
+    Label1: TLabel;
+    NameInput: TDBEdit;
+    Label2: TLabel;
+    PhoneInput: TDBEdit;
+    Label4: TLabel;
+    EmailInput: TDBEdit;
+    SaveCustomerFormButton: TBitBtn;
+    CancelCustomerFormButton: TBitBtn;
+    CountCustomersLabel: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure EditCustomerButtonClick(Sender: TObject);
+    procedure CancelCustomerFormButtonClick(Sender: TObject);
+    procedure SaveCustomerFormButtonClick(Sender: TObject);
+    procedure CreateCustomerButtonClick(Sender: TObject);
+    procedure DeleteCustomerButtonClick(Sender: TObject);
+    procedure SearchCustomerInputChange(Sender: TObject);
+    procedure RefreshCounter();
+    procedure EnableHeader();
+    procedure DisableHeader();
+    procedure EnableFormButtons();
+    procedure DisableFormButtons();
+    procedure EnableCustomerGrid();
+    procedure DisableCustomerGrid();
+
+  private
+    procedure DisnableHeader;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CustomerForm: TCustomerForm;
+
+implementation
+
+uses DataModule;
+{$R *.dfm}
+
+procedure TCustomerForm.CancelCustomerFormButtonClick(Sender: TObject);
+begin
+  EnableHeader;
+  DisableFormButtons;
+  EnableCustomerGrid;
+  MainData.CustomerDataSet.Cancel;
+end;
+
+procedure TCustomerForm.CreateCustomerButtonClick(Sender: TObject);
+begin
+  MainData.CustomerDataSet.Insert;
+  DisableHeader;
+  EnableFormButtons;
+  DisableCustomerGrid;
+end;
+
+procedure TCustomerForm.DeleteCustomerButtonClick(Sender: TObject);
+begin
+    if not MainData.CustomerDataSet.isEmpty then
+    begin
+     if Application.MessageBox('Voce desejar apagar este usuario?', 'Exclusão', MB_ICONQUESTION + MB_YESNO + MB_DEFBUTTON1) = ID_YES then
+     begin
+     try
+        MainData.CustomerDataSet.Delete;
+        MainData.CustomerDataSet.ApplyUpdates(0);
+        Application.MessageBox('Cliente apagado com sucesso!', 'Cadastro',
+          MB_ICONINFORMATION + MB_OK);
+     Except
+     Application.MessageBox('Erro em cadastrar o cliente!', 'Erro',
+      MB_ICONERROR + MB_OK);
+      end;
+     end;
+    end;
+end;
+
+procedure TCustomerForm.DisableCustomerGrid;
+begin
+    CustomerGrid.Enabled := false;
+end;
+
+
+procedure TCustomerForm.DisableFormButtons;
+begin
+    CustomerFormGroupBox.Enabled := false;
+    SaveCustomerFormButton.Enabled := false;
+    CancelCustomerFormButton.Enabled := false;
+end;
+
+procedure TCustomerForm.DisableHeader;
+begin
+    CreateCustomerButton.Enabled := false;
+    EditCustomerButton.Enabled := false;
+    DeleteCustomerButton.Enabled := false;
+    SearchCustomerInput.Enabled := false;
+end;
+
+
+procedure TCustomerForm.DisnableHeader;
+begin
+
+end;
+
+procedure TCustomerForm.EditCustomerButtonClick(Sender: TObject);
+begin
+  MainData.CustomerDataSet.Edit;
+  NameInput.SetFocus;
+  DisableHeader;
+  EnableFormButtons;
+  DisableCustomerGrid;
+end;
+
+procedure TCustomerForm.EnableCustomerGrid;
+begin
+  CustomerGrid.Enabled := true;
+end;
+
+procedure TCustomerForm.EnableFormButtons;
+begin
+    CustomerFormGroupBox.Enabled := true;
+    SaveCustomerFormButton.Enabled := true;
+    CancelCustomerFormButton.Enabled := true;
+end;
+
+procedure TCustomerForm.EnableHeader;
+begin
+    CreateCustomerButton.Enabled := true;
+    EditCustomerButton.Enabled := true;
+    DeleteCustomerButton.Enabled := true;
+    SearchCustomerInput.Enabled := true;
+    CustomerGrid.Enabled := true;
+end;
+
+procedure TCustomerForm.FormShow(Sender: TObject);
+begin
+    EnableHeader;
+    DisableFormButtons;
+    if MainData.CustomerDataSet.isEmpty then
+    begin
+      EditCustomerButton.Enabled := false;
+    end;
+    RefreshCounter;
+end;
+
+procedure TCustomerForm.RefreshCounter;
+var
+  TotalCustomers : integer;
+begin
+TotalCustomers := MainData.CustomerDataSet.RecordCount;
+       if TotalCustomers = 1 then
+          CountCustomersLabel.Caption := IntToStr(TotalCustomers) + ' Registro encontrados.';
+       if TotalCustomers > 1 then
+          CountCustomersLabel.Caption := IntToStr(TotalCustomers) + ' Registros encontrados.';
+end;
+
+procedure TCustomerForm.SaveCustomerFormButtonClick(Sender: TObject);
+var
+  PriorState: TDataSetState;
+begin
+  try
+    PriorState := MainData.CustomerDataSet.State;
+    MainData.CustomerDataSet.Post;
+    MainData.CustomerDataSet.ApplyUpdates(0);
+    MainData.CustomerDataSet.Refresh;
+    case PriorState of
+      dsInsert:
+        Application.MessageBox('Cliente criado com sucesso!', 'Cadastro',
+          MB_ICONINFORMATION + MB_OK);
+      dsEdit:
+        Application.MessageBox('Cliente alterado com sucesso!', 'Cadastro',
+          MB_ICONINFORMATION + MB_OK);
+    end;
+  Except
+    Application.MessageBox('Erro em cadastrar o cliente!', 'Erro',
+      MB_ICONERROR + MB_OK);
+  end;
+    EnableHeader;
+    DisableFormButtons;
+end;
+
+procedure TCustomerForm.SearchCustomerInputChange(Sender: TObject);
+var
+  TotalCustomers : integer;
+begin
+       CustomersDataSource.DataSet.Filter := 'LOWER(NAME) LIKE ' + QuotedStr('%' + LowerCase(SearchCustomerInput.Text) + '%');
+       CustomersDataSource.DataSet.Filtered := true;
+       RefreshCounter;
+end;
+end.

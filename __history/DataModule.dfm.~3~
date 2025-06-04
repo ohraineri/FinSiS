@@ -1,0 +1,21 @@
+object MainData: TMainData
+  OldCreateOrder = False
+  Height = 382
+  Width = 642
+  object DatabaseConnection: TSQLConnection
+    ConnectionName = 'FBConnection'
+    DriverName = 'Firebird'
+    GetDriverFunc = 'getSQLDriverINTERBASE'
+    LibraryName = 'dbxfb.dll'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverName=Firebird'
+      
+        'Database=C:\Users\Administrador\Documents\MProject\Database\DATA' +
+        'BASE.fdb'
+      'User_Name=SYSDBA')
+    VendorLib = 'fbclient.dll'
+    Left = 232
+    Top = 128
+  end
+end
