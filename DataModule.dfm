@@ -16,14 +16,14 @@ object MainData: TMainData
     VendorLib = 'fbclient.dll'
     Connected = True
     Left = 56
-    Top = 264
+    Top = 24
   end
   object SQLGetCustomers: TSQLTable
     MaxBlobSize = -1
     SQLConnection = SQLConnection
     TableName = 'CUSTOMERS'
     Left = 144
-    Top = 264
+    Top = 24
     object SQLGetCustomersID: TLargeintField
       FieldName = 'ID'
     end
@@ -48,16 +48,16 @@ object MainData: TMainData
   object DataSetProvider1: TDataSetProvider
     DataSet = SQLGetCustomers
     UpdateMode = upWhereKeyOnly
-    Left = 368
-    Top = 272
+    Left = 232
+    Top = 24
   end
   object CustomerDataSet: TClientDataSet
     Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DataSetProvider1'
-    Left = 436
-    Top = 272
+    Left = 320
+    Top = 24
     object CustomerDataSetID: TLargeintField
       FieldName = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -79,5 +79,89 @@ object MainData: TMainData
       Required = True
       Size = 254
     end
+  end
+  object SQLGetSuppliers: TSQLTable
+    MaxBlobSize = -1
+    SQLConnection = SQLConnection
+    TableName = 'SUPPLIERS'
+    Left = 144
+    Top = 96
+  end
+  object DataSetProvider2: TDataSetProvider
+    DataSet = SQLGetSuppliers
+    UpdateMode = upWhereKeyOnly
+    Left = 232
+    Top = 96
+  end
+  object SupplierDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider2'
+    Left = 320
+    Top = 96
+  end
+  object SQLGetUsuarios: TSQLTable
+    MaxBlobSize = -1
+    SQLConnection = SQLConnection
+    TableName = 'USUARIOS'
+    Left = 144
+    Top = 168
+  end
+  object DataSetProvider3: TDataSetProvider
+    DataSet = SQLGetUsuarios
+    UpdateMode = upWhereKeyOnly
+    Left = 232
+    Top = 168
+  end
+  object UsuarioDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider3'
+    Left = 320
+    Top = 168
+  end
+  object SQLGetContasAPagar: TSQLTable
+    MaxBlobSize = -1
+    SQLConnection = SQLConnection
+    TableName = 'CONTAS_A_PAGAR'
+    Left = 144
+    Top = 240
+  end
+  object DataSetProvider4: TDataSetProvider
+    DataSet = SQLGetContasAPagar
+    UpdateMode = upWhereKeyOnly
+    Left = 232
+    Top = 240
+  end
+  object ContasAPagarDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider4'
+    Left = 320
+    Top = 240
+  end
+  object SQLGetContasAReceber: TSQLTable
+    MaxBlobSize = -1
+    SQLConnection = SQLConnection
+    TableName = 'CONTAS_A_RECEBER'
+    Left = 144
+    Top = 312
+  end
+  object DataSetProvider5: TDataSetProvider
+    DataSet = SQLGetContasAReceber
+    UpdateMode = upWhereKeyOnly
+    Left = 232
+    Top = 312
+  end
+  object ContasAReceberDataSet: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DataSetProvider5'
+    Left = 320
+    Top = 312
   end
 end

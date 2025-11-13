@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, Customer;
+  Dialogs, Menus, Customer, Supplier, Usuario, ContasAPagar, ContasAReceber;
 
 type
   TDashboardForm = class(TForm)
@@ -53,23 +53,51 @@ begin
 end;
 
 procedure TDashboardForm.Fornecedores1Click(Sender: TObject);
+var
+  SupplierForm : TSupplierForm;
 begin
-  ShowMessage('Funcionalidade de Fornecedores em desenvolvimento.');
+  SupplierForm := TSupplierForm.Create(Application);
+  try
+    SupplierForm.ShowModal;
+  finally
+    SupplierForm.Free;
+  end;
 end;
 
 procedure TDashboardForm.Usuarios1Click(Sender: TObject);
+var
+  UsuarioForm : TUsuarioForm;
 begin
-  ShowMessage('Funcionalidade de Usuarios em desenvolvimento.');
+  UsuarioForm := TUsuarioForm.Create(Application);
+  try
+    UsuarioForm.ShowModal;
+  finally
+    UsuarioForm.Free;
+  end;
 end;
 
 procedure TDashboardForm.Apagar1Click(Sender: TObject);
+var
+  ContasAPagarForm : TContasAPagarForm;
 begin
-  ShowMessage('Funcionalidade de Contas a Pagar em desenvolvimento.');
+  ContasAPagarForm := TContasAPagarForm.Create(Application);
+  try
+    ContasAPagarForm.ShowModal;
+  finally
+    ContasAPagarForm.Free;
+  end;
 end;
 
 procedure TDashboardForm.Areceber1Click(Sender: TObject);
+var
+  ContasAReceberForm : TContasAReceberForm;
 begin
-  ShowMessage('Funcionalidade de Contas a Receber em desenvolvimento.');
+  ContasAReceberForm := TContasAReceberForm.Create(Application);
+  try
+    ContasAReceberForm.ShowModal;
+  finally
+    ContasAReceberForm.Free;
+  end;
 end;
 
 end.
