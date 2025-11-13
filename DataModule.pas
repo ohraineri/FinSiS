@@ -22,6 +22,18 @@ type
     CustomerDataSetPHONE: TStringField;
     CustomerDataSetBIRTHDAY_DATE: TDateField;
     CustomerDataSetEMAIL: TStringField;
+    SQLGetSuppliers: TSQLTable;
+    DataSetProvider2: TDataSetProvider;
+    SupplierDataSet: TClientDataSet;
+    SQLGetUsuarios: TSQLTable;
+    DataSetProvider3: TDataSetProvider;
+    UsuarioDataSet: TClientDataSet;
+    SQLGetContasAPagar: TSQLTable;
+    DataSetProvider4: TDataSetProvider;
+    ContasAPagarDataSet: TClientDataSet;
+    SQLGetContasAReceber: TSQLTable;
+    DataSetProvider5: TDataSetProvider;
+    ContasAReceberDataSet: TClientDataSet;
   private
     { Private declarations }
   public

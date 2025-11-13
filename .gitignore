@@ -1,0 +1,14 @@
+# Delphi compiled units
+*.dcu
+*.~*
+*.local
+*.identcache
+
+# Compiled executables
+*.exe
+
+# History files
+__history/
+
+# Local configuration
+*.dproj.local
