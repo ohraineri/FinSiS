@@ -44,7 +44,6 @@ type
     procedure DisableCustomerGrid();
 
   private
-    procedure DisnableHeader;
     { Private declarations }
   public
     { Public declarations }
@@ -78,7 +77,7 @@ procedure TCustomerForm.DeleteCustomerButtonClick(Sender: TObject);
 begin
     if not MainData.CustomerDataSet.isEmpty then
     begin
-     if Application.MessageBox('Voce desejar apagar este usuario?', 'Exclusão', MB_ICONQUESTION + MB_YESNO + MB_DEFBUTTON1) = ID_YES then
+     if Application.MessageBox('Voce desejar apagar este usuario?', 'Exclusï¿½o', MB_ICONQUESTION + MB_YESNO + MB_DEFBUTTON1) = ID_YES then
      begin
      try
         MainData.CustomerDataSet.Delete;
@@ -114,11 +113,6 @@ begin
     SearchCustomerInput.Enabled := false;
 end;
 
-
-procedure TCustomerForm.DisnableHeader;
-begin
-
-end;
 
 procedure TCustomerForm.EditCustomerButtonClick(Sender: TObject);
 begin
@@ -167,7 +161,7 @@ var
 begin
 TotalCustomers := MainData.CustomerDataSet.RecordCount;
        if TotalCustomers = 1 then
-          CountCustomersLabel.Caption := IntToStr(TotalCustomers) + ' Registro encontrados.';
+          CountCustomersLabel.Caption := IntToStr(TotalCustomers) + ' Registro encontrado.';
        if TotalCustomers > 1 then
           CountCustomersLabel.Caption := IntToStr(TotalCustomers) + ' Registros encontrados.';
 end;

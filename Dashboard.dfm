@@ -27,18 +27,22 @@ object DashboardForm: TDashboardForm
       end
       object Fornecedores1: TMenuItem
         Caption = 'Fornecedores'
+        OnClick = Fornecedores1Click
       end
       object Usuarios1: TMenuItem
         Caption = 'Usuarios'
+        OnClick = Usuarios1Click
       end
     end
     object C2: TMenuItem
       Caption = 'Contas'
       object Apagar1: TMenuItem
         Caption = 'A pagar'
+        OnClick = Apagar1Click
       end
       object Areceber1: TMenuItem
         Caption = 'A receber'
+        OnClick = Areceber1Click
       end
     end
     object Sair1: TMenuItem

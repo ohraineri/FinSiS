@@ -19,6 +19,10 @@ type
     Sair1: TMenuItem;
     procedure Clientes1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
+    procedure Fornecedores1Click(Sender: TObject);
+    procedure Usuarios1Click(Sender: TObject);
+    procedure Apagar1Click(Sender: TObject);
+    procedure Areceber1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,13 +40,36 @@ var
   CustomerForm : TCustomerForm;
 begin
   CustomerForm := TCustomerForm.Create(Application);
-  CustomerForm.Show;
-  CustomerForm.FreeOnRelease;
+  try
+    CustomerForm.ShowModal;
+  finally
+    CustomerForm.Free;
+  end;
 end;
 
 procedure TDashboardForm.Sair1Click(Sender: TObject);
 begin
     Application.Terminate;
+end;
+
+procedure TDashboardForm.Fornecedores1Click(Sender: TObject);
+begin
+  ShowMessage('Funcionalidade de Fornecedores em desenvolvimento.');
+end;
+
+procedure TDashboardForm.Usuarios1Click(Sender: TObject);
+begin
+  ShowMessage('Funcionalidade de Usuarios em desenvolvimento.');
+end;
+
+procedure TDashboardForm.Apagar1Click(Sender: TObject);
+begin
+  ShowMessage('Funcionalidade de Contas a Pagar em desenvolvimento.');
+end;
+
+procedure TDashboardForm.Areceber1Click(Sender: TObject);
+begin
+  ShowMessage('Funcionalidade de Contas a Receber em desenvolvimento.');
 end;
 
 end.
